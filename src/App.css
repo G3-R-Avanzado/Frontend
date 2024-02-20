@@ -1,0 +1,15 @@
+.navbarStyle{
+    background-color:#FFE600 ;
+}
+main {
+    min-height: 100vh;
+    flex-grow: 1;
+    flex-direction: column;
+}
+body {
+    width: 100%;
+    min-height: 100vh;
+    color:#f8d7d7;
+    display: flex;
+    flex-direction: column;
+}
