@@ -5,6 +5,7 @@ import { PublicRoutes } from './PublicRoutes';
 import { PrivateRoutes } from './PrivateRoutes';
 import { AuthLayout } from '../layouts/AuthLayout';
 import { GeneralLayout } from '../layouts/GeneralLayout';
+import Menu from '../components/common/Menu';
 
 export const AppRoutes = () => {
     const {state} = useContext(AuthContext)
@@ -12,6 +13,8 @@ export const AppRoutes = () => {
     console.log(isLogged);
     
     return (
+        <>
+        <Menu></Menu>
         <Routes>
             <Route path='/auth/*' element={
                 <PublicRoutes isLogged={isLogged}>
@@ -24,5 +27,6 @@ export const AppRoutes = () => {
                 </PrivateRoutes>
             }/>
         </Routes>
+        </>
     );
 };

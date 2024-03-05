@@ -8,10 +8,8 @@ export const AuthLayout = () => {
     console.log("Auth Layout");
 
     return (
-        <Container>
             <Routes>
                 <Route path='/login' element={<Login/>}/>
             </Routes>
-        </Container>
     );
 };

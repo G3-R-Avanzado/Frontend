@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form, Button,Container } from 'react-bootstrap';
 import { useForm } from '../../Hooks/useForm';
 import { AuthContext } from '../../providers/AuthProvider';
 
@@ -35,11 +35,9 @@ export const Login = () => {
                         onChange={onChangeInput}
                     />
                 </Form.Group>
-
                 <Row className='my-3'>
                     <Button type="submit">Login</Button>
                 </Row>
-
             </Form>
         </Row>
     );
