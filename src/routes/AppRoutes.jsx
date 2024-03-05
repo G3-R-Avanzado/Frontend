@@ -6,6 +6,7 @@ import { PrivateRoutes } from './PrivateRoutes';
 import { AuthLayout } from '../layouts/AuthLayout';
 import { GeneralLayout } from '../layouts/GeneralLayout';
 import Menu from '../components/common/Menu';
+import Footer from '../components/common/Footer';
 
 export const AppRoutes = () => {
     const {state} = useContext(AuthContext)
@@ -27,6 +28,7 @@ export const AppRoutes = () => {
                 </PrivateRoutes>
             }/>
         </Routes>
+        <Footer></Footer>
         </>
     );
 };

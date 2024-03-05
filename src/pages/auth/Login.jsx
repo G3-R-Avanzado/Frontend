@@ -17,10 +17,11 @@ export const Login = () => {
     },[state])
 
     return (
-        <Row className='d-flex justify-content-center'>
+        <Container>
+        <Row className=' d-flex justify-content-center'>
             <Form onSubmit={handleSubmit} className='w-50'>
                 <Form.Group as={Row} className='my-3'>
-                    <Form.Label>Usuario</Form.Label>
+                    <Form.Label className='text-start'>Usuario</Form.Label>
                     <Form.Control
                         type="text"
                         name="usuario"
@@ -28,7 +29,7 @@ export const Login = () => {
                     />
                 </Form.Group>
                 <Form.Group as={Row} className='my-3'>
-                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Label className='text-start'>Contraseña</Form.Label>
                     <Form.Control
                         type="text"
                         name="contraseña"
@@ -40,5 +41,6 @@ export const Login = () => {
                 </Row>
             </Form>
         </Row>
+        </Container>
     );
 };

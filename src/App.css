@@ -2,8 +2,15 @@
     background-color: #FFE600;
 }
 
-#root {
-    max-width: 100%vh;
-    margin: 0 auto;
-    text-align: center;
+body, html {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: rgb(248,215,215);
+    background: linear-gradient(90deg, rgba(248,215,215,1) 0%, rgba(255,255,255,1) 100%);
+    margin: 0;
+}
+#footer{
+    position: fixed;
+    bottom: 0;
 }
