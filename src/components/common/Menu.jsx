@@ -5,7 +5,7 @@ const Menu = () => {
     return (
         <>
             <Navbar expand="md" className="navbarStyle" fixed='top'>
-                <Container fluid>
+                {/* <Container fluid> */}
                     <Navbar.Brand  className='d-flex text-white'>
                         <Image src={Logo} style={{ height: "50px" }} alt="" className='mx-2 mt-2' roundedCircle />
                         <p className='ms-2 mt-3 text-black fs-5'>TucuLibre </p>
@@ -17,7 +17,7 @@ const Menu = () => {
                             <Nav.Link href="#contacto"className='text-black' >Contacto</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
-                </Container>
+                {/* </Container> */}
             </Navbar>
         </>
     );
