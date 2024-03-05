@@ -1,21 +1,24 @@
-.navbarStyle{
-    background-color:#FFE600 ;
+.navbarStyle {
+    background-color: #FFE600;
 }
+
 main {
     min-height: 100vh;
     flex-grow: 1;
     flex-direction: column;
 }
+
 body {
     width: 100%;
     min-height: 100vh;
-    color:#f8d7d7;
+    color: #f8d7d7;
     display: flex;
     flex-direction: column;
 }
+
 #root {
-  max-width: 100vh;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    max-width: 100vh;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
 }
