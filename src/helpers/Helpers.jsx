@@ -10,3 +10,11 @@ export const validationAltaProduct = yup.object().shape({
     Precio: yup.number().required('Campo requerido').min(100, 'precio minimo de 100 pesos'),
     Atributos: yup.array().of(Attribut).min(1, 'cargue un valor')
 });
+
+export const validationRegisterUser = yup.object().shape({
+    name: yup.string().required("Campo requerido"),
+    username: yup.string().required("Campo requerido"),
+    email: yup.string().email("debe ingresar un email").required("Campo requerido"),
+    password: yup.string().required("Campo requerido")
+})
+

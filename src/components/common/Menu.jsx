@@ -20,7 +20,8 @@ const Menu = () => {
                     <Navbar.Toggle className='text-white' aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="navbarScroll" className='responsive-navbar-nav'>
                         <Nav className="ms-auto"style={{ maxHeight: '100px' }} navbarScroll>
-                            <Nav.Link href="#inicio"className='text-black' >Inicio</Nav.Link>
+                            
+                            <Nav.Link href="#inicio"className='text-black'>Inicio</Nav.Link>
                             <Nav.Link href="#contacto"className='text-black' >Contacto</Nav.Link>
                             {isLogged && <Button variant='danger' onClick={()=>dispatch(logout())}>Logout</Button>}
                         </Nav>

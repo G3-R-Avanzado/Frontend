@@ -11,7 +11,8 @@ const initialState = {
         updateAt: null
     },
     isLogged: false,
-    token: null
+    token: null,
+    message: null
 }  
 
 export const authSlice = createSlice({
@@ -21,7 +22,8 @@ export const authSlice = createSlice({
         login: (state, action) => {
             state.user = action.payload.user,
             state.token = action.payload.token,
-            state.isLogged = true
+            state.isLogged = true,
+            state.message = null
         }, 
         logout: (state) => {
             state.user = {
@@ -33,9 +35,13 @@ export const authSlice = createSlice({
                 updateAt: null
             },
             state.token = null,
-            state.isLogged = false
+            state.isLogged = false,
+            state.message = null
+        },
+        messageError: (state, action) => {
+            state.message = action.payload.message
         }
     } 
 });
 
-export const {login, logout} = authSlice.actions;
+export const {login, logout, messageError} = authSlice.actions;

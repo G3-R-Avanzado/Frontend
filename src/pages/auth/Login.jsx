@@ -1,13 +1,16 @@
 import React, { useContext, useEffect } from 'react';
 import { Row, Col, Form, Button,Container } from 'react-bootstrap';
 import { useForm } from '../../Hooks/useForm';
+import { Link } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getLogin } from '../../store/slices/auth/authThunks';
 
 
 export const Login = () => {
     const { formState, onChangeInput } = useForm();
+
+    const {message} = useSelector((store)=>store.auth)
 
     const dispatch = useDispatch();
 
@@ -38,9 +41,14 @@ export const Login = () => {
                         onChange={onChangeInput}
                     />
                 </Form.Group>
+
                 <Row className='my-3'>
                     <Button type="submit">Login</Button>
+                    {message && (<span className='text-danger'>{message}</span>)}
                 </Row>
+
+                <Link to={'/auth/register'}>Registrarse</Link>
+                
             </Form>
         </Row>
     );
