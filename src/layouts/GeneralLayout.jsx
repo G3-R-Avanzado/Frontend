@@ -5,8 +5,8 @@ import { Alta } from '../pages/products/Alta.jsx'
 
 export const GeneralLayout = () => {
     return (
-            <Routes>
-                <Route path='/' element={<Alta />} />
-            </Routes>
+        <Routes>
+            <Route path='/' element={<Alta />} />
+        </Routes>
     );
 };

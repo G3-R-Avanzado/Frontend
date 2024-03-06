@@ -4,9 +4,6 @@ import { Login } from '../pages/auth/Login';
 import { Routes, Route } from 'react-router-dom';
 
 export const AuthLayout = () => {
-
-    console.log("Auth Layout");
-
     return (
             <Routes>
                 <Route path='/login' element={<Login/>}/>
