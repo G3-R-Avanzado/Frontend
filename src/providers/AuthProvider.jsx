@@ -10,28 +10,42 @@ const initialValues = {
     token: '',
     message: ''
 }
-
 export const AuthProvider = ({children})=>{
     const [state, dispatch] = useReducer(AuthReducer, initialValues)
     const login = ({usuario, contraseña}) => {
         const user = {
             user: {
-                name: 'Agustin',
-                apellido: 'Sanchez'
+                name: 'Agustin',// esto se debe cambiar hardcodeado
+                apellido: 'Sanchez'// esto se debe cambiar hardcodeado
             },
             isLogged: true,
             token: 'asdasdasdasdasd',
             message: 'Usuario logeado con exito'
         }
-
         dispatch({
-            type: types.auth.login,
+            type: "LOGIN",
             payload: user
         })
     }
-
+    const logout = () => {
+        const user = {
+            user: {
+                name: null,
+                apellido: null
+            },
+        }
+        dispatch({
+            type: "LOGOUT",
+            payload:{
+                user:null,
+                isLogged: false,
+                token: null,
+                message:"Cerraste sesion"        
+            } 
+        })
+    }
     return (
-        <AuthContext.Provider value={{state, login}}>
+        <AuthContext.Provider value={{state, login,logout}}>
             {children}
         </AuthContext.Provider>
     )

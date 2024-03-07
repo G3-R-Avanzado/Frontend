@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext,useEffect } from 'react';
 import { Nav, Navbar, Container, Image, Form, NavDropdown,Button } from "react-bootstrap"
 import Logo from "../../assets/logo1.png"
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -6,15 +6,18 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Menu = (props) => {
-    const nav=useNavigate();
-    const {state, login,logout} = useContext(AuthContext);
-    const cerrarSesion = ()=>{
-    event.preventDefault()
-    event.preventDefault();
 
-    logout();
-    Swal.fire("Cerraste sesión","","success")
-    }
+    const {state,logout} = useContext(AuthContext);
+    
+    useEffect(() => {
+        if (state.message) {
+            Swal.fire(`${state.message}`, ``, 'success');
+        }
+    }, [state.message]);
+
+    const cerrarSesion = () => {
+        logout();
+    };
     return (
         <>
             <Navbar expand="md" className="navbarStyle site-wrap" >

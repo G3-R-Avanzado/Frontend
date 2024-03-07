@@ -16,7 +16,7 @@ export const AuthReducer = (state={}, action) => {
                     user: null, 
                     isLogged: false,
                     token: null,
-                    message: action.payload.message
+                    message: "Cerraste sesion"
                 }
         default:
             break;
