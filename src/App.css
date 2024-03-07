@@ -33,12 +33,10 @@ background-color: white;
     border-radius: 50%;
     background-color: white;
     }
-#BtnAdministrar :hover{
-background-color: rgb(186, 186, 186);
+Button :hover{
+    transform: scale(105%);
 }
-Button:hover{
-    background-color: rgb(186, 186, 186);
-}
+
 #footer{
     bottom: 0;
     left: 0;

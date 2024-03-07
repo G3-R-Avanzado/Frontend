@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 const useCarousel = (totalItems) => {
-    console.log(totalItems);
     const [currentIndex, setCurrentIndex] = useState(0);
     const goToNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex === totalItems - 1 ? 0 : prevIndex + 1));
