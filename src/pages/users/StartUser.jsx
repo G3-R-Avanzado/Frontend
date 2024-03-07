@@ -1,6 +1,6 @@
 import React from 'react';
 import { usuario } from '../../usuario';
-import { Button, Container, Row, Col, Modal } from 'react-bootstrap';
+import { Button, Container, Row, Col, Modal, Form } from 'react-bootstrap';
 import icono1 from "../../assets/icono1.png"
 import icono2 from "../../assets/icono2.png"
 import useModal from '../../Hooks/useModal';
@@ -11,6 +11,7 @@ const StartUser = (props) => {
     //Aqui logica para registrar la venta
     const enviarSolicitud = () => {
 
+        Swal.fire("¡Solicitud de venta enviada!", "Aguarda a que nuestro equipo apruebe tu solicitud. Pronto te estaremos avisando!", "success")
     }
     return (
         <>
@@ -46,7 +47,44 @@ const StartUser = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        
+                        <Row>
+                        <Form.Group as={Col} md="12" controlId="validationCustom01">
+                            <Form.Label>Nombre</Form.Label>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder="Pj. Ventilador de pie,celular,auto ..."
+                            />
+                            <Form.Control.Feedback></Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group as={Col} md="12" controlId="validationCustom01">
+                            <Form.Label>Precio</Form.Label>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder="Pj. 2.000$"
+                            />
+                            <Form.Control.Feedback></Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group as={Col} md="12" controlId="validationCustom01">
+                            <Form.Label>Descripción</Form.Label>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder="Pj. Estado del producto, detalles, especificaciones"
+                            />
+                            <Form.Control.Feedback></Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group as={Col} md="12" controlId="validationCustom01">
+                            <Form.Label>Imagen del producto</Form.Label>
+                            <Form.Control
+                                required
+                                type="file"
+                                placeholder="Pj. Ventilador de pie,celular,auto ..."
+                            />
+                            <Form.Control.Feedback></Form.Control.Feedback>
+                        </Form.Group>
+                    </Row>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
