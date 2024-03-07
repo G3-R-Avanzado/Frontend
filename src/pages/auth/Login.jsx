@@ -6,7 +6,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 export const Login = () => {
     const { formState, onChangeInput } = useForm();
     const {state, login} = useContext(AuthContext)
-
+console.log("PITO");
     const handleSubmit = (event) => {
         event.preventDefault();
         login(formState);
@@ -25,6 +25,7 @@ export const Login = () => {
                     <Form.Control
                         type="text"
                         name="usuario"
+                        defaultValue={"g3admin@gmail.com"}
                         onChange={onChangeInput}
                     />
                 </Form.Group>
@@ -33,6 +34,7 @@ export const Login = () => {
                     <Form.Control
                         type="text"
                         name="contraseña"
+                        defaultValue={"g3-admin"}
                         onChange={onChangeInput}
                     />
                 </Form.Group>

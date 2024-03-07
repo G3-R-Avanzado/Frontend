@@ -5,5 +5,5 @@ export const PrivateRoutes = ({ children, isLogged }) => {
     console.log("Private Routes");
     return (isLogged)
         ? children
-        : <Navigate to={'/auth/login'} />
+        : <Navigate to={'/'} />
 };
