@@ -1,0 +1,1 @@
+export const EnviarSolicitud = ""//url de api para enviar datos del prod

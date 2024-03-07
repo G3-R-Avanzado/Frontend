@@ -4,10 +4,14 @@ import { Button, Container, Row, Col, Modal } from 'react-bootstrap';
 import icono1 from "../../assets/icono1.png"
 import icono2 from "../../assets/icono2.png"
 import useModal from '../../Hooks/useModal';
+import Swal from 'sweetalert2';
 
 const StartUser = (props) => {
     const { open, ShowModal, CloseModal } = useModal()
+    //Aqui logica para registrar la venta
+    const enviarSolicitud = () => {
 
+    }
     return (
         <>
             <Container>
@@ -38,15 +42,19 @@ const StartUser = (props) => {
             </Container>
             <Modal show={open} onHide={CloseModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Ingrese los campos</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+                    <Form>
+                        
+                    </Form>
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={CloseModal}>
                         Cancelar
                     </Button>
                     <Button variant="primary" onClick={{}}>
-                        Save Changes
+                        Enviar solicitud
                     </Button>
                 </Modal.Footer>
             </Modal>

@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 const useModal = () => {
     const [open, setOpen] = useState(false)
     
-    const ShowModal = (event) =>{
+    const ShowModal = () =>{
     setOpen(true)
     }
-    const CloseModal =(event)=>{
+    const CloseModal =()=>{
     setOpen(false)
     }
     return {
