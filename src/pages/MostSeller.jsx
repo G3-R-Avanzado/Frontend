@@ -10,10 +10,11 @@ const MostSeller = () => {
 
     return (
         <>
-        <Carousel  activeIndex={currentIndex} onSelect={goToIndex}>
+        <Carousel    activeIndex={currentIndex} onSelect={goToIndex}>
             {productos.portada.map((item, index) => (
-                <Carousel.Item  key={index}>
-                    <Image src={item.src} className='w-100vh text-center' />
+                <Carousel.Item   key={index}>
+                    <Image src={item.src} id='carousel' className=' align-self-center objet-fit-contain' />
+
                    {/*  <Carousel.Caption>
                         <h3>{item.Nombre}</h3>
                         <p>{item.Descripcion}</p>

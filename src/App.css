@@ -21,6 +21,11 @@ padding: 20px;
 border-radius: 50%;
 background-color: white;
 }
+#carousel{
+    z-index: 0;
+    width: 100%;
+    object-fit: cover!important;
+}
 .carousel-control-next-icon {
     background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='black'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")!important;
     padding: 20px;
@@ -31,6 +36,6 @@ background-color: white;
 #footer{
     bottom: 0;
     left: 0;
+    z-index: 1;
     margin: 0;
-    position:fixed;
 }
