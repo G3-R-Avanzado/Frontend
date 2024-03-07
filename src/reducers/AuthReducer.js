@@ -10,6 +10,14 @@ export const AuthReducer = (state={}, action) => {
                 token: action.payload.token,
                 message: action.payload.message
             }
+            case types.auth.logout:
+                return{
+                    ...state,
+                    user: null, 
+                    isLogged: false,
+                    token: null,
+                    message: action.payload.message
+                }
         default:
             break;
     }

@@ -9,9 +9,12 @@ import Swal from 'sweetalert2';
 const StartUser = (props) => {
     const { open, ShowModal, CloseModal } = useModal()
     //Aqui logica para registrar la venta
+    
     const enviarSolicitud = () => {
-
-        Swal.fire("¡Solicitud de venta enviada!", "Aguarda a que nuestro equipo apruebe tu solicitud. Pronto te estaremos avisando!", "success")
+        event.preventDefault();
+        CloseModal();
+        Swal.fire("¡Solicitud de venta enviada!", "¡Aguarda un poco! Nuestro equipo revisará tu solicitud. Pronto nos contactaremos contigo!... Mientras a comprar algo no?.", "success")
+        
     }
     return (
         <>
@@ -46,12 +49,12 @@ const StartUser = (props) => {
                     <Modal.Title>Ingrese los campos</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={enviarSolicitud}>
                         <Row>
                         <Form.Group as={Col} md="12" controlId="validationCustom01">
                             <Form.Label>Nombre</Form.Label>
                             <Form.Control
-                                required
+                                
                                 type="text"
                                 placeholder="Pj. Ventilador de pie,celular,auto ..."
                             />
@@ -60,7 +63,7 @@ const StartUser = (props) => {
                         <Form.Group as={Col} md="12" controlId="validationCustom01">
                             <Form.Label>Precio</Form.Label>
                             <Form.Control
-                                required
+                                
                                 type="text"
                                 placeholder="Pj. 2.000$"
                             />
@@ -69,7 +72,7 @@ const StartUser = (props) => {
                         <Form.Group as={Col} md="12" controlId="validationCustom01">
                             <Form.Label>Descripción</Form.Label>
                             <Form.Control
-                                required
+                                
                                 type="text"
                                 placeholder="Pj. Estado del producto, detalles, especificaciones"
                             />
@@ -78,23 +81,25 @@ const StartUser = (props) => {
                         <Form.Group as={Col} md="12" controlId="validationCustom01">
                             <Form.Label>Imagen del producto</Form.Label>
                             <Form.Control
-                                required
+                                
                                 type="file"
                                 placeholder="Pj. Ventilador de pie,celular,auto ..."
                             />
                             <Form.Control.Feedback></Form.Control.Feedback>
                         </Form.Group>
                     </Row>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={CloseModal}>
+                    <Row className='mt-4'>
+                    <Col className='d-flex justify-content-end'>
+                    <Button className=" mx-2" variant="secondary" onClick={CloseModal}>
                         Cancelar
                     </Button>
-                    <Button variant="primary" onClick={{}}>
+                    <Button className=" mx-2"variant="primary" type="submit">
                         Enviar solicitud
                     </Button>
-                </Modal.Footer>
+                    </Col>
+                    </Row>
+                    </Form>
+                </Modal.Body>
             </Modal>
         </>
     );

@@ -7,7 +7,8 @@ const useModal = () => {
     setOpen(true)
     }
     const CloseModal =()=>{
-    setOpen(false)
+    console.log("entro");
+        setOpen(false)
     }
     return {
         ...open,

@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Nav, Navbar, Container, Image, Form, NavDropdown,Button } from "react-bootstrap"
 import Logo from "../../assets/logo1.png"
 import { NavLink, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Menu = (props) => {
     const nav=useNavigate();
+    const {state, login,logout} = useContext(AuthContext);
+    const cerrarSesion = ()=>{
+    event.preventDefault()
+    event.preventDefault();
+
+    logout();
+    Swal.fire("Cerraste sesión","","success")
+    }
     return (
         <>
             <Navbar expand="md" className="navbarStyle site-wrap" >
@@ -20,7 +30,7 @@ const Menu = (props) => {
                             <NavLink end to="/home"className='mx-2 btn-navbar nav-item nav-link ' >Inicio</NavLink>
                             {
                                 props.isLogged?
-                                <NavLink end to="/auth/"className='mx-2 btn-navbar nav-item nav-link ' >Cerrar Sesión</NavLink>
+                                <NavLink end className='mx-2 btn-navbar nav-item nav-link ' onClick={cerrarSesion} >Cerrar Sesión</NavLink>
                                 :
                                 <NavLink end to="/login"className='mx-2 btn-navbar nav-item nav-link ' >Ingresar</NavLink>
                             }

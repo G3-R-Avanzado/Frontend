@@ -5,16 +5,13 @@ import { AuthContext } from '../../providers/AuthProvider';
 
 export const Login = () => {
     const { formState, onChangeInput } = useForm();
-    const {state, login} = useContext(AuthContext)
-console.log("PITO");
+    const {state, login} = useContext(AuthContext);
+
     const handleSubmit = (event) => {
         event.preventDefault();
         login(formState);
     }
 
-    useEffect(()=>{
-        console.log(state);
-    },[state])
 
     return (
         <Container>
