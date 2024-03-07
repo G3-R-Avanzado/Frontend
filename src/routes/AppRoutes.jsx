@@ -24,7 +24,7 @@ export const AppRoutes = () => {
                         <AuthLayout />
                     </PublicRoutes>
                 } />
-                <Route exact path='/Admin' element={
+                <Route exact path='/Admin/*' element={
                     <PrivateRoutes isLogged={isLogged}>
                         <GeneralLayout />
                     </PrivateRoutes>
