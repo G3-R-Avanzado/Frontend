@@ -5,24 +5,20 @@ import { logout } from '../../store/slices/auth/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../providers/AuthProvider';
 
 const Menu = (props) => {
-
-    const {state,logout} = useContext(AuthContext);
+    const {isLogged, message} = useSelector((store)=> store.auth)
+    const dispatch = useDispatch()
     
     useEffect(() => {
-        if (state.message) {
-            Swal.fire(`${state.message}`, ``, 'success');
+        if (message) {
+            Swal.fire(`${message}`, ``, 'success');
         }
-    }, [state.message]);
+    }, [message]);
 
     const cerrarSesion = () => {
-        logout();
+        dispatch(logout());
     };
-    const {isLogged} = useSelector((store)=> store.auth)
-    const dispatch = useDispatch()
-
 
     return (
         <>

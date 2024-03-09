@@ -8,6 +8,7 @@ import { GeneralLayout } from '../layouts/GeneralLayout';
 import { useSelector, useDispatch } from 'react-redux';
 import Menu from '../components/common/Menu';
 import { checkToken } from '../store/slices/auth/authThunks';
+import { Footer } from '../components/common/Footer.jsx'
 
 export const AppRoutes = () => {
     const {isLogged} = useSelector((state)=>state.auth)

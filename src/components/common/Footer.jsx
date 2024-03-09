@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container,Row,Col} from 'react-bootstrap';
 
-const Footer = () => {
+export const Footer = () => {
     return (
         <Container fluid id="footer"  className="py-5 bg-white">
             <Row className="d-flex justify-content-md-around">
@@ -16,4 +16,3 @@ const Footer = () => {
         
     );
 };
-export default Footer;

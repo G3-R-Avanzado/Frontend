@@ -16,6 +16,7 @@ export const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(formState);
 
         dispatch(
             getLogin(formState.email, formState.password)
@@ -31,6 +32,7 @@ export const Login = () => {
                     <Form.Control
                         type="text"
                         name="email"
+                        defaultValue={"g3admin@gmail.com"}
                         onChange={onChangeInput}
                     />
                 </Form.Group>
@@ -38,7 +40,7 @@ export const Login = () => {
                     <Form.Label className='text-start'>Contraseña</Form.Label>
                     <Form.Control
                         type="text"
-                        name="contraseña"
+                        name="password"
                         defaultValue={"g3-admin"}
                         onChange={onChangeInput}
                     />
