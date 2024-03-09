@@ -53,7 +53,7 @@ export const Register = () => {
                                 type='text'
                                 name='username'
                                 value={values.username}
-                                onChange={handleChange}
+                                onChange={(event)=>{handleChange(event); refreshMessageError();}}
                                 isInvalid={errors.username}
                             />
                             <FormB.Control.Feedback type='invalid'>{errors.username}</FormB.Control.Feedback>
@@ -64,7 +64,7 @@ export const Register = () => {
                                 type='email'
                                 name='email'
                                 value={values.email}
-                                onChange={handleChange}
+                                onChange={(event)=>{handleChange(event); refreshMessageError();}}
                                 isInvalid={errors.email && touched.email}
                             />
                             <FormB.Control.Feedback type='invalid'>{errors.email}</FormB.Control.Feedback>
@@ -75,7 +75,7 @@ export const Register = () => {
                                 type='password'
                                 name='password'
                                 value={values.password}
-                                onChange={handleChange}
+                                onChange={(event)=>{handleChange(event); refreshMessageError();}}
                                 isInvalid={errors.password && touched.password}
                             />
                             <FormB.Control.Feedback type='invalid'>{errors.password}</FormB.Control.Feedback>
