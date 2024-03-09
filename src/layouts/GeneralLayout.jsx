@@ -8,10 +8,8 @@ import DashUser from '../pages/users/DashUser.jsx';
 
 export const GeneralLayout = () => {
     return (
-            <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path="/user"element={<StartUser/>} />
-                <Route path="/dashboard"element={<DashUser/>} />
-            </Routes>
+        <Routes>
+            <Route path='/' element={<Alta />} />
+        </Routes>
     );
 };

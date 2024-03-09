@@ -1,20 +1,22 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../providers/AuthProvider';
-import { Routes, Route, BrowserRouter, createBrowserRouter } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+//import { AuthContext } from '../providers/AuthProvider';
+import { Routes, Route } from 'react-router-dom';
 import { PublicRoutes } from './PublicRoutes';
 import { PrivateRoutes } from './PrivateRoutes';
 import { AuthLayout } from '../layouts/AuthLayout';
 import { GeneralLayout } from '../layouts/GeneralLayout';
+import { useSelector, useDispatch } from 'react-redux';
 import Menu from '../components/common/Menu';
-import Footer from '../components/common/Footer';
-import Home from '../pages/Home';
-import { Login } from '../pages/auth/Login';
+import { checkToken } from '../store/slices/auth/authThunks';
 
 export const AppRoutes = () => {
-    const { state } = useContext(AuthContext)
-    const isLogged = state.isLogged;
-    console.log(isLogged);
+    const {isLogged} = useSelector((state)=>state.auth)
+    const dispatch = useDispatch()
 
+    useEffect(()=>{
+        dispatch(checkToken())
+    },[])
+    
     return (
         <>
             <Menu isLogged={isLogged}/>

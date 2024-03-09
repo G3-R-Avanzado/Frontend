@@ -1,17 +1,26 @@
 import React, { useContext, useEffect } from 'react';
 import { Row, Col, Form, Button,Container } from 'react-bootstrap';
 import { useForm } from '../../Hooks/useForm';
-import { AuthContext } from '../../providers/AuthProvider';
+import { Link } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getLogin } from '../../store/slices/auth/authThunks';
+
 
 export const Login = () => {
     const { formState, onChangeInput } = useForm();
-    const {state, login} = useContext(AuthContext);
+
+    const {message} = useSelector((store)=>store.auth)
+
+    const dispatch = useDispatch();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        login(formState);
-    }
 
+        dispatch(
+            getLogin(formState.email, formState.password)
+        )
+    }
 
     return (
         <Container>
@@ -21,8 +30,7 @@ export const Login = () => {
                     <Form.Label className='text-start'>Usuario</Form.Label>
                     <Form.Control
                         type="text"
-                        name="usuario"
-                        defaultValue={"g3admin@gmail.com"}
+                        name="email"
                         onChange={onChangeInput}
                     />
                 </Form.Group>
@@ -35,9 +43,14 @@ export const Login = () => {
                         onChange={onChangeInput}
                     />
                 </Form.Group>
+
                 <Row className='my-3'>
                     <Button type="submit">Login</Button>
+                    {message && (<span className='text-danger'>{message}</span>)}
                 </Row>
+
+                <Link to={'/auth/register'}>Registrarse</Link>
+                
             </Form>
         </Row>
         </Container>

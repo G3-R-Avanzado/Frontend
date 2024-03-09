@@ -1,6 +1,8 @@
 import React, { useContext,useEffect } from 'react';
 import { Nav, Navbar, Container, Image, Form, NavDropdown,Button } from "react-bootstrap"
 import Logo from "../../assets/logo1.png"
+import { logout } from '../../store/slices/auth/authSlice';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
@@ -18,6 +20,10 @@ const Menu = (props) => {
     const cerrarSesion = () => {
         logout();
     };
+    const {isLogged} = useSelector((store)=> store.auth)
+    const dispatch = useDispatch()
+
+
     return (
         <>
             <Navbar expand="md" className="navbarStyle site-wrap" >
