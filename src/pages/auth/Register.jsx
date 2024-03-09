@@ -1,10 +1,11 @@
 import { Form, Formik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Row, Form as FormB, Col, Button } from 'react-bootstrap';
 import { validationRegisterUser } from '../../helpers/Helpers';
 import { register } from '../../store/slices/auth/authThunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { messageError } from '../../store/slices/auth/authSlice';
 
 
 export const Register = () => {
@@ -22,6 +23,10 @@ export const Register = () => {
         const response = await dispatch(register(event));
     } 
 
+    const refreshMessageError = () => {
+        message != null && dispatch(messageError({message:null}))
+    }
+
     return (
         <Row className='d-flex justify-content-center'>
             <Formik
@@ -37,7 +42,7 @@ export const Register = () => {
                                 type='text'
                                 name='name'
                                 value={values.name}
-                                onChange={handleChange}
+                                onChange={(event)=>{handleChange(event); refreshMessageError();}}
                                 isInvalid={errors.name && touched.name}
                             />
                             <FormB.Control.Feedback type='invalid'>{errors.name}</FormB.Control.Feedback>
