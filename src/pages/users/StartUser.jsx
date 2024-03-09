@@ -5,8 +5,10 @@ import icono1 from "../../assets/icono1.png"
 import icono2 from "../../assets/icono2.png"
 import useModal from '../../Hooks/useModal';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const StartUser = (props) => {
+    const navegar=useNavigate();
     const { open, ShowModal, CloseModal } = useModal()
     //Aqui logica para registrar la venta
     
@@ -26,11 +28,11 @@ const StartUser = (props) => {
                 <Container>
                     <Row className='d-flex justify-content-center align-items-center my-5 '>
                         <Col lg={6} md={12} className='my-3 d-flex justify-content-center '>
-                            <Button id='BtnAdministrar' className='bg-white border rounded'>
+                            <Button id='BtnAdministrar'onClick={()=>(navegar("/dashboard"))} className='bg-white border rounded'>
                                 <Container style={{ with: "160px!important", height: "160px" }}>
                                     <img src={icono1} style={{ objectFit: "contain" }} alt="" />
                                 </Container>
-                                <span className='text-black'>Ver mis publicaciones</span>
+                                <span className='text-black' >Ver mis publicaciones</span>
                             </Button>
                         </Col>
                         <Col lg={6} md={12} className='my-3 d-flex justify-content-center '>

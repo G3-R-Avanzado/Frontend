@@ -37,5 +37,5 @@ export const useAxios = (url, method, params) => {
 
 useAxios.defaultProps = {
     params: null,
-    // method: 'post'
+    method: 'post'
 }
