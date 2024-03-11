@@ -41,15 +41,14 @@ export const register = (newUser) => {
         try {
             const {data} = await axiosAuth.post('/register', newUser);
             const token = 'sa23fgty54tgfewr43'
-
             dispatch(login({
-                user: data,
-                token: token
+                user: data.username,
+                token: token,
+                rol:data.rol
             }))
-
             localStorage.setItem('user', JSON.stringify(data))
             localStorage.setItem('token', token)
-
+            console.log(data)
         } catch (error) {
             dispatch(messageError({message: error.response.data[0]}))
         }

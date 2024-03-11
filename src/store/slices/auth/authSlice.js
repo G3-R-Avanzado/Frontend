@@ -19,9 +19,11 @@ export const authSlice = createSlice({
     initialState: initialState,
     reducers: {
         login: (state, action) => {
+            console.log(action)
             state.user = action.payload.user,
             state.token = action.payload.token,
             state.isLogged = true,
+            state.rol=action.payload.user.rol
             state.message={
                 type:"success",
                 text:"Iniciaste sesión"
@@ -33,6 +35,7 @@ export const authSlice = createSlice({
                 email: null,
                 rol: null,
                 id: null,
+                rol:null,
                 createdAt: null,
                 updateAt: null
             },

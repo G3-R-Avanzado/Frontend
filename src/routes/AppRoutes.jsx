@@ -11,9 +11,9 @@ import { Footer } from '../components/common/Footer.jsx'
 import PrivateRoutesUser from './PrivateRoutesUser.jsx';
 import PublicLayouts from '../layouts/PublicLayouts.jsx';
 import AdminLayouts from "../layouts/AdminLayout.jsx"
-
+import UserLayout from "../layouts/UserLayout.jsx"
 export const AppRoutes = () => {
-    const {isLogged} = useSelector((state)=>state.auth)
+    const {isLogged,rol} = useSelector((state)=>state.auth)
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -22,23 +22,23 @@ export const AppRoutes = () => {
     
     return (
         <>
-            <Menu isLogged={isLogged}/>
+            <Menu isLogged={isLogged} rol={rol}/>
             <Routes>
                 <Route exact path='/*' element={
-                    <PublicRoutes isLogged={isLogged}>
+                    <PublicRoutes isLogged={isLogged} rol={rol}>
                         <PublicLayouts/>
                         <AuthLayout />
                     </PublicRoutes>
                 } 
                 />
                 <Route exact path='/Admin/*' element={
-                    <PrivateRoutesAdmin isLogged={isLogged}>
+                    <PrivateRoutesAdmin isLogged={isLogged} rol={rol}>
                         <AdminLayouts />
                     </PrivateRoutesAdmin>
                 } />
                 <Route path='/Usuario/*' element={
-                    <PrivateRoutesUser isLogged={isLogged}>
-                    
+                    <PrivateRoutesUser isLogged={isLogged} rol={rol}>
+                    <UserLayout/>
                     </PrivateRoutesUser>
                 }/>
             </Routes>
