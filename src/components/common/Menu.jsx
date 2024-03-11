@@ -10,7 +10,7 @@ const Menu = (props) => {
     const { isLogged, message,rol } = useSelector((store) => store.auth)
     const dispatch = useDispatch()
     const navegar = useNavigate();
-
+    
     useEffect(() => {
         if (message) {
             Swal.fire(`${message.text}`, ``, `${message.type}`);
@@ -42,7 +42,7 @@ const Menu = (props) => {
                             <>
                                 <NavLink end className='mx-2 btn-navbar nav-item nav-link ' onClick={cerrarSesion} >Cerrar Sesión</NavLink>
                                 {rol == "admin" ? (
-                                    <NavLink end className='mx-2 btn-navbar nav-item nav-link ' to="/" >Administrar</NavLink>
+                                    <NavLink end className='mx-2 btn-navbar nav-item nav-link ' to="/Admin/Dashboard" >Administrar</NavLink>
                                 ) : (
                                     <NavLink end className='mx-2 btn-navbar nav-item nav-link ' to="/User/Dashboard" >Mis publicaciones</NavLink>
                                 )}
