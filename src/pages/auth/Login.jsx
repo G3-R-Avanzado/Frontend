@@ -9,15 +9,10 @@ import { getLogin } from '../../store/slices/auth/authThunks';
 
 export const Login = () => {
     const { formState, onChangeInput } = useForm();
-
     const {message} = useSelector((store)=>store.auth)
-
     const dispatch = useDispatch();
-
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(formState);
-
         dispatch(
             getLogin(formState.email, formState.password)
         )
@@ -45,14 +40,11 @@ export const Login = () => {
                         onChange={onChangeInput}
                     />
                 </Form.Group>
-
                 <Row className='my-3'>
                     <Button type="submit">Login</Button>
                     {message && (<span className='text-danger'>{message}</span>)}
                 </Row>
-
                 <Link to={'/auth/register'}>Registrarse</Link>
-                
             </Form>
         </Row>
         </Container>

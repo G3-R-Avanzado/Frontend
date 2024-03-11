@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SellItem = () => {
+const DashboardAdmin = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const SellItem = () => {
     );
 };
 
-export default SellItem;
+export default DashboardAdmin;

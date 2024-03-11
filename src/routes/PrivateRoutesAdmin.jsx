@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-export const PrivateRoutes = ({ children, isLogged }) => {
+export const PrivateRoutesAdmin = ({ children, isLogged }) => {
     return (isLogged)
         ? children
-        : <Navigate to={'/'} />
+        : <Navigate to={'/login'} />
 };
