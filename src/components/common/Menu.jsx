@@ -20,10 +20,6 @@ const Menu = (props) => {
         dispatch(logout());
         navegar("/")
     };
-    useEffect(() => {
-        console.log(rol)
-        console.log(isLogged)
-    }, [rol])
     
     return (
         <>
@@ -48,7 +44,10 @@ const Menu = (props) => {
                                 )}
                             </>
                         ) : (
+                            <>
                             <NavLink end to="/login" className='mx-2 btn-navbar nav-item nav-link ' >Ingresar</NavLink>
+                            <NavLink end to="/register" className='mx-2 btn-navbar nav-item nav-link ' >Registrarme</NavLink>
+                            </>
                         )}
                         <NavLink end to="" className='mx-2 btn-navbar nav-item nav-link ' >Contacto</NavLink>
                         <NavLink end to="" className='mx-2 btn-navbar nav-item nav-link ' >Ayuda</NavLink>

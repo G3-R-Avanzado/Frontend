@@ -20,7 +20,7 @@ export const Register = () => {
     }
 
     const handleSubmitFormik = async (event) => {
-        const response = await dispatch(register(event));
+        const response = dispatch(register(event));
     } 
 
     const refreshMessageError = () => {
@@ -32,8 +32,7 @@ export const Register = () => {
             <Formik
                 validationSchema={validationRegisterUser}
                 onSubmit={handleSubmitFormik}
-                initialValues={initialValues}
-            >
+                initialValues={initialValues}>
                 {({handleSubmit, handleChange, values, errors, touched})=>(
                     <Form as={Row} className='w-50' onSubmit={handleSubmit}>
                         <FormB.Group>
@@ -85,7 +84,6 @@ export const Register = () => {
                 )}
             </Formik>
             {message && <span className='text-danger'>{message}</span>}        
-            <Link to={'/auth/login'}>Login</Link>
         </Row>
     );
 };
