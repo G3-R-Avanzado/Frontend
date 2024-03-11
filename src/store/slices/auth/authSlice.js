@@ -22,7 +22,10 @@ export const authSlice = createSlice({
             state.user = action.payload.user,
             state.token = action.payload.token,
             state.isLogged = true,
-            state.message = null
+            state.message={
+                type:"success",
+                text:"Iniciaste sesión"
+            } 
         }, 
         logout: (state) => {
             state.user = {
@@ -35,10 +38,18 @@ export const authSlice = createSlice({
             },
             state.token = null,
             state.isLogged = false,
-            state.message = null
+            state.message={
+                type:"success",
+                text:"Cerraste sesión"
+            } 
         },
         messageError: (state, action) => {
-            state.message = action.payload.message
+            console.log(state)
+            console.log(action)
+            state.message ={
+                type:"error",
+                text:action.payload.message
+            } 
         }
     } 
 });

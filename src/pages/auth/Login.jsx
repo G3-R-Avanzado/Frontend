@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import { Row, Col, Form, Button,Container } from 'react-bootstrap';
 import { useForm } from '../../Hooks/useForm';
 import { Link } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { getLogin } from '../../store/slices/auth/authThunks';
 
@@ -42,7 +41,7 @@ export const Login = () => {
                 </Form.Group>
                 <Row className='my-3'>
                     <Button type="submit">Login</Button>
-                    {message && (<span className='text-danger'>{message}</span>)}
+                    {message && (<span className='text-danger'>{message.text}</span>)}
                 </Row>
                 <Link to={'/auth/register'}>Registrarse</Link>
             </Form>

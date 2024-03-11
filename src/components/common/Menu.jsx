@@ -9,15 +9,17 @@ import Swal from 'sweetalert2';
 const Menu = (props) => {
     const {isLogged, message} = useSelector((store)=> store.auth)
     const dispatch = useDispatch()
-    
+    const navegar=useNavigate();
     useEffect(() => {
+        console.log("ALGO")
         if (message) {
-            Swal.fire(`${message}`, ``, 'success');
+            Swal.fire(`${message.text}`, ``, `${message.type}`);
         }
+        
     }, [message]);
-
     const cerrarSesion = () => {
         dispatch(logout());
+        navegar("/")
     };
 
     return (
