@@ -12,6 +12,7 @@ import PrivateRoutesUser from './PrivateRoutesUser.jsx';
 import PublicLayouts from '../layouts/PublicLayouts.jsx';
 import AdminLayouts from "../layouts/AdminLayout.jsx"
 import UserLayout from "../layouts/UserLayout.jsx"
+import Home from '../pages/Home/Home.jsx';
 export const AppRoutes = () => {
     const {isLogged,rol} = useSelector((state)=>state.auth)
     const dispatch = useDispatch()
@@ -24,13 +25,7 @@ export const AppRoutes = () => {
         <>
             <Menu isLogged={isLogged} rol={rol}/>
             <Routes>
-                <Route exact path='/*' element={
-                    <PublicRoutes isLogged={isLogged} rol={rol}>
-                        <PublicLayouts/>
-                        <AuthLayout />
-                    </PublicRoutes>
-                } 
-                />
+                <Route exact path='/*' element={<Home/>}/>
                 <Route exact path='/Admin/*' element={
                     <PrivateRoutesAdmin isLogged={isLogged} rol={rol}>
                         <AdminLayouts />
