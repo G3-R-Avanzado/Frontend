@@ -1,60 +1,77 @@
 import React, { useContext, useEffect } from 'react';
-import { Row, Col, Form, Button,Container } from 'react-bootstrap';
-import { useForm } from '../../Hooks/useForm';
+import { Row, Col, Form, Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { getLogin } from '../../store/slices/auth/authThunks';
+import LayoutAuth from './LayoutAuth.jsx'
+import { Formik } from 'formik';
+import { validationAuthUser } from '../../helpers/Helpers.jsx';
+
 
 
 export const Login = () => {
-    const { formState, onChangeInput } = useForm();
+    //const { formState, onChangeInput } = useForm();
 
-    const {message} = useSelector((store)=>store.auth)
+    const { message } = useSelector((store) => store.auth)
 
     const dispatch = useDispatch();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(formState);
+    const initialValues = {
+        email: 'g3admin@gmail.com',
+        password: 'g3-admin'
+    }
 
+    const handleSubmitFormik = async (event) => {
         dispatch(
-            getLogin(formState.email, formState.password)
-        )
+            getLogin(event.email, event.password)
+        ) 
     }
 
     return (
-        <Container>
-        <Row className=' d-flex justify-content-center'>
-            <Form onSubmit={handleSubmit} className='w-50'>
-                <Form.Group as={Row} className='my-3'>
-                    <Form.Label className='text-start'>Usuario</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name="email"
-                        defaultValue={"g3admin@gmail.com"}
-                        onChange={onChangeInput}
-                    />
-                </Form.Group>
-                <Form.Group as={Row} className='my-3'>
-                    <Form.Label className='text-start'>Contraseña</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name="password"
-                        defaultValue={"g3-admin"}
-                        onChange={onChangeInput}
-                    />
-                </Form.Group>
 
-                <Row className='my-3'>
-                    <Button type="submit">Login</Button>
-                    {message && (<span className='text-danger'>{message}</span>)}
-                </Row>
+        <LayoutAuth>
+            <Formik
+                validationSchema={validationAuthUser}
+                onSubmit={handleSubmitFormik}
+                initialValues={initialValues}
+            >
+                {({ handleSubmit, handleChange, values, errors, touched }) => (
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group as={Row}>
+                            <Form.Label className='text-start'>Usuario</Form.Label>
+                            <Form.Control
+                                type="email"
+                                name="email"
+                                value={values.email}
+                                onChange={handleChange}
+                                isInvalid={errors.email && touched.email}
+                            />
+                            <Form.Control.Feedback type='invalid'>{errors.email}</Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group as={Row}>
+                            <Form.Label className='text-start'>Contraseña</Form.Label>
+                            <Form.Control
+                                type="password"
+                                name="password"
+                                value={values.password}
+                                onChange={handleChange}
+                                isInvalid={errors.password && touched.password}
+                            />
+                            <Form.Control.Feedback type='invalid'>{errors.password}</Form.Control.Feedback>
+                        </Form.Group>
 
-                <Link to={'/auth/register'}>Registrarse</Link>
-                
-            </Form>
-        </Row>
-        </Container>
+                        <Row className='mt-3'>
+                            <Button type="submit">Login</Button>
+                            {message && (<span className='text-danger'>{message}</span>)}
+                        </Row>
+                        <Row className='text-center'>
+                            <Link to={'/auth/register'}>Registrarse</Link>
+                        </Row>
+
+                    </Form>)}
+            </Formik>
+
+        </LayoutAuth>
+
     );
 };

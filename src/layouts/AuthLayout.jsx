@@ -12,6 +12,9 @@ export const AuthLayout = () => {
     return (
         <>
             <Routes>
+                <Route path='/home' element={<Home/>}/>
+                <Route path='/start' element={<StartUser/>}/>
+                <Route path='/dashUser' element={<DashUser/>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/register' element={<Register/>}/>
             </Routes>

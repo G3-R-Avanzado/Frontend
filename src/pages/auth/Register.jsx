@@ -6,6 +6,7 @@ import { register } from '../../store/slices/auth/authThunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { messageError } from '../../store/slices/auth/authSlice';
+import LayoutAuth from './LayoutAuth';
 
 
 export const Register = () => {
@@ -28,15 +29,15 @@ export const Register = () => {
     }
 
     return (
-        <Row className='d-flex justify-content-center'>
+        <LayoutAuth>
             <Formik
                 validationSchema={validationRegisterUser}
                 onSubmit={handleSubmitFormik}
                 initialValues={initialValues}
             >
                 {({handleSubmit, handleChange, values, errors, touched})=>(
-                    <Form as={Row} className='w-50' onSubmit={handleSubmit}>
-                        <FormB.Group>
+                    <Form onSubmit={handleSubmit}>
+                        <FormB.Group as={Row}>
                             <FormB.Label>Nombre</FormB.Label>
                             <FormB.Control
                                 type='text'
@@ -47,18 +48,18 @@ export const Register = () => {
                             />
                             <FormB.Control.Feedback type='invalid'>{errors.name}</FormB.Control.Feedback>
                         </FormB.Group>
-                        <FormB.Group>
+                        <FormB.Group as={Row}>
                             <FormB.Label>Nombre de usuario</FormB.Label>
                             <FormB.Control
                                 type='text'
                                 name='username'
                                 value={values.username}
                                 onChange={(event)=>{handleChange(event); refreshMessageError();}}
-                                isInvalid={errors.username}
+                                isInvalid={errors.username && touched.username}
                             />
                             <FormB.Control.Feedback type='invalid'>{errors.username}</FormB.Control.Feedback>
                         </FormB.Group>
-                        <FormB.Group>
+                        <FormB.Group as={Row}>
                             <FormB.Label>Email</FormB.Label>
                             <FormB.Control
                                 type='email'
@@ -69,7 +70,7 @@ export const Register = () => {
                             />
                             <FormB.Control.Feedback type='invalid'>{errors.email}</FormB.Control.Feedback>
                         </FormB.Group>
-                        <FormB.Group>
+                        <FormB.Group as={Row}>
                             <FormB.Label>Contraseña</FormB.Label>
                             <FormB.Control
                                 type='password'
@@ -80,12 +81,20 @@ export const Register = () => {
                             />
                             <FormB.Control.Feedback type='invalid'>{errors.password}</FormB.Control.Feedback>
                         </FormB.Group>
-                        <Button type='submit' className='mt-3'>Registrarse</Button>
+                        
+                        <Row>
+                            <Button type='submit' className='mt-3'>Registrarse</Button>
+                            {message && <span className='text-danger'>{message}</span>}
+                        </Row>
+                        
+                        <Row className='text-center'>        
+                            <Link to={'/auth/login'}>Login</Link>
+                        </Row>
                     </Form>
                 )}
             </Formik>
-            {message && <span className='text-danger'>{message}</span>}        
-            <Link to={'/auth/login'}>Login</Link>
-        </Row>
+            
+            
+        </LayoutAuth>
     );
 };

@@ -5,18 +5,19 @@ export const getLogin = (email, password) => {
     return async (dispatch) => {
         try {
 
-            const { data } = await axiosAuth.post('/login', {
+            const response = await axiosAuth.post('/login', {
                 email: email,
                 password: password
             })
 
+            console.log(response);
             const token = 'sa23fgty54tgfewr43'
 
-            localStorage.setItem('user', JSON.stringify(data))
+            localStorage.setItem('user', JSON.stringify(response.data))
             localStorage.setItem('token', token)
 
             dispatch(login({
-                user: data,
+                user: response.data,
                 token: token
             }))
 

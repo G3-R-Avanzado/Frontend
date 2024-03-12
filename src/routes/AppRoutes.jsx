@@ -22,12 +22,12 @@ export const AppRoutes = () => {
         <>
             <Menu isLogged={isLogged}/>
             <Routes>
-                <Route exact path='/*' element={
+                <Route exact path='/auth/*' element={
                     <PublicRoutes isLogged={isLogged}>
                         <AuthLayout />
                     </PublicRoutes>
                 } />
-                <Route exact path='/Admin/*' element={
+                <Route exact path='/*' element={
                     <PrivateRoutes isLogged={isLogged}>
                         <GeneralLayout />
                     </PrivateRoutes>
