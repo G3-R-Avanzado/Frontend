@@ -17,16 +17,16 @@ import Home from '../pages/Home/Home.jsx';
 export const AppRoutes = () => {
     const {isLogged,rol} = useSelector((state)=>state.auth)
     const dispatch = useDispatch()
-
+    
     useEffect(()=>{
         dispatch(checkToken())
     },[])
     
     return (
         <>
-            <Menu isLogged={isLogged} />
+            <Menu isLogged={isLogged} rol={rol} />
             <Routes>
-                <Route path='/Home' element={<Home/>}/>
+                <Route path='/' element={<Home/>}/>
                 <Route exact path='/*' element={
                     <PublicRoutes isLogged={isLogged} rol={rol}>
                         <AuthLayout />

@@ -1,5 +1,7 @@
 import { login, logout, messageError } from "./authSlice";
 import { axiosAuth } from "../../../config/axiosApi";
+import { Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export const getLogin = (email, password) => {
     return async (dispatch) => {
@@ -11,27 +13,30 @@ export const getLogin = (email, password) => {
             const token = 'sa23fgty54tgfewr43'
             localStorage.setItem('user', JSON.stringify(data))
             localStorage.setItem('token', token)
-            dispatch(login({
+            const cookieToken = Cookies.get('token	')
+            const allCookies = Cookies.get();
+            console.log(cookieToken);
+            console.log(allCookies);
+            /* dispatch(login({
                 user: data,
                 token: token
-            }))
-
+            })) */
         } catch (error) {
             dispatch(messageError({message: error.response.data[0]}))
         }
-
     }
 }
 
 export const checkToken = () => {
     return async (dispatch) => {
         const token = localStorage.getItem('token')
-
         if(!token){
             //valido si el token esta vacio
-            dispatch(logout())
+    //            dispatch(login())
+        }else{
+            console.log("aqio");
+            
         }
-
         //validacion con backend del token
     }
 }

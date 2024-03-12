@@ -33,7 +33,7 @@ const Menu = (props) => {
                 <Navbar.Toggle className='text-white' aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse className='responsive-navbar-nav'>
                     <Nav className="ms-auto me-5" style={{ maxHeight: '100px' }} navbarScroll>
-                        <NavLink end to="/Home" className='mx-2 btn-navbar nav-item nav-link ' >Inicio</NavLink>
+                        <NavLink end to="/" className='mx-2 btn-navbar nav-item nav-link ' >Inicio</NavLink>
                         {isLogged ? (
                             <>
                                 <NavLink end className='mx-2 btn-navbar nav-item nav-link ' onClick={cerrarSesion} >Cerrar Sesión</NavLink>
