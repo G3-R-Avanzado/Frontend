@@ -1,39 +1,56 @@
 import React, { useContext, useEffect } from 'react';
-//import { AuthContext } from '../providers/AuthProvider';
 import { Routes, Route } from 'react-router-dom';
+
+
 import { PublicRoutes } from './PublicRoutes';
-import { PrivateRoutes } from './PrivateRoutes';
+import { GeneralRoutes } from './GeneralRoutes.jsx';
+
 import { AuthLayout } from '../layouts/AuthLayout';
-import { GeneralLayout } from '../layouts/GeneralLayout';
+import PublicLayouts from '../layouts/PublicLayouts.jsx';
+import UserLayout from "../layouts/UserLayout.jsx";
+import AdminLayouts from "../layouts/AdminLayout.jsx";
+
 import { useSelector, useDispatch } from 'react-redux';
-import Menu from '../components/common/Menu';
 import { checkToken } from '../store/slices/auth/authThunks';
+
+
+import Menu from '../components/common/Menu';
 import { Footer } from '../components/common/Footer.jsx'
+import Home from '../pages/Home/Home.jsx';
+import { Roles } from '../type/Type.js';
+
+
+
+
 
 export const AppRoutes = () => {
-    const {isLogged} = useSelector((state)=>state.auth)
+    const {isLogged, user} = useSelector((state)=>state.auth)
     const dispatch = useDispatch()
-
+    
     useEffect(()=>{
-        dispatch(checkToken())
+        //dispatch(checkToken())
     },[])
     
     return (
         <>
-            <Menu isLogged={isLogged}/>
+            <Menu isLogged={isLogged} rol={user.rol} />
             <Routes>
+                {/* <Route path='/' element={<Home/>}/> */}
                 <Route exact path='/auth/*' element={
                     <PublicRoutes isLogged={isLogged}>
                         <AuthLayout />
                     </PublicRoutes>
-                } />
-                <Route exact path='/*' element={
-                    <PrivateRoutes isLogged={isLogged}>
-                        <GeneralLayout />
-                    </PrivateRoutes>
-                } />
+                }/>
+                <Route path='/*' element={
+                    <GeneralRoutes isLogged={isLogged}>
+                        {user.rol == Roles.Admin && <AdminLayouts/>}
+                        {user.rol == Roles.User && <UserLayout/>}
+                        <PublicLayouts/>
+                    </GeneralRoutes>
+                }/>
+
             </Routes>
-            <Footer></Footer>
+            <Footer/>
         </>
     );
 };

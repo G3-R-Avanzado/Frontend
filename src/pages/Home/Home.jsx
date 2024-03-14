@@ -1,11 +1,12 @@
 import React from 'react';
 import MostSeller from './MostSeller';
-import { Container } from 'react-bootstrap';
+import DetailMostSeller from './DetailMostSeller';
 
 const Home = () => {
     return (
         <>
             <MostSeller/>
+            {/* <DetailMostSeller/> */}
         </>
     );
 };
