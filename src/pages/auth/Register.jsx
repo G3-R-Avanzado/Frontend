@@ -83,7 +83,7 @@ export const Register = () => {
                         
                         <Row>
                             <Button type='submit' className='mt-3'>Registrarse</Button>
-                            {message && <span className='text-danger'>{message}</span>}
+                            {message && <span className='text-danger'>{message?.text}</span>}
                         </Row>
                         
                         <Row className='text-center'>        

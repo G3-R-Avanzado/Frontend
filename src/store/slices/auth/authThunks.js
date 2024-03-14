@@ -7,19 +7,19 @@ export const getLogin = (email, password) => {
     return async (dispatch) => {
         try {
             
-            /* const { data } = await axiosAuth.post('/login', {
+            const { data } = await axiosAuth.post('/login', {
                 email: email,
                 password: password
-            }) */
+            })
 
-            const data = {
+            /* const data = {
                 username: "Agustin",
                 email: "asdasdasd@gmail.com",
                 rol: "Admin",
                 id: 51561651,
                 createdAt: "dasdasd",
                 updateAt: "sadadasd"
-            }
+            } */
 
 
             const token = 'sa23fgty54tgfewr43'
@@ -41,16 +41,13 @@ export const getLogin = (email, password) => {
 
 export const checkToken = () => {
     return async (dispatch) => {
-        // const token = localStorage.getItem('token')
+        const token = localStorage.getItem('token')
 
-        
-        /* if(!token){
-            //valido si el token esta vacio
-            //dispatch(login())
+        if(!token){
+            //dispatch(logout())
         }else{
             //console.log("aqio");
-        } */
-        //validacion con backend del token
+        } 
     }
 }
 
@@ -66,7 +63,6 @@ export const register = (newUser) => {
             }))
             localStorage.setItem('user', JSON.stringify(data))
             localStorage.setItem('token', token)
-            console.log(data)
         } catch (error) {
             dispatch(messageError({message: error.response.data[0]}))
         }

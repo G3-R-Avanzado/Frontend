@@ -10,10 +10,6 @@ import { validationAuthUser } from '../../helpers/Helpers.jsx';
 
 
 export const Login = () => {
-    //const { formState, onChangeInput } = useForm();
-
-    const { message } = useSelector((store) => store.auth)
-
     const dispatch = useDispatch();
 
     const initialValues = {
@@ -62,7 +58,6 @@ export const Login = () => {
 
                         <Row className='mt-3'>
                             <Button type="submit">Login</Button>
-                            {message && (<span className='text-danger'>{message}</span>)}
                         </Row>
                         <Row className='text-center'>
                             <Link to={'/auth/register'}>Registrarse</Link>

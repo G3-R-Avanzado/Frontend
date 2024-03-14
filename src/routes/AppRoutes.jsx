@@ -18,6 +18,7 @@ import Menu from '../components/common/Menu';
 import { Footer } from '../components/common/Footer.jsx'
 import Home from '../pages/Home/Home.jsx';
 import { Roles } from '../type/Type.js';
+import { Login } from '../pages/auth/Login';
 
 
 
@@ -28,26 +29,40 @@ export const AppRoutes = () => {
     const dispatch = useDispatch()
     
     useEffect(()=>{
-        //dispatch(checkToken())
+        dispatch(checkToken())
     },[])
     
     return (
         <>
             <Menu isLogged={isLogged} rol={user.rol} />
             <Routes>
-                {/* <Route path='/' element={<Home/>}/> */}
+
+                //#region Rutas Generales
+
+                <Route path='/' element={<Home/>}/>
+
+                //#endregion
+
+                //#region Rutas publicas
+
                 <Route exact path='/auth/*' element={
                     <PublicRoutes isLogged={isLogged}>
                         <AuthLayout />
                     </PublicRoutes>
                 }/>
+
+                //#endregion
+                
+                //#region Rutas privadas
+                
                 <Route path='/*' element={
                     <GeneralRoutes isLogged={isLogged}>
                         {user.rol == Roles.Admin && <AdminLayouts/>}
                         {user.rol == Roles.User && <UserLayout/>}
-                        <PublicLayouts/>
                     </GeneralRoutes>
                 }/>
+
+                //#endregion
 
             </Routes>
             <Footer/>

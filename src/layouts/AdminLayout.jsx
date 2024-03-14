@@ -6,7 +6,7 @@ import DashboardAdmin from '../pages/admins/DashboardAdmin';
 const AdminLayout = () => {
     return (
         <Routes>
-            <Route path='/admin/dasboard' element={<DashboardAdmin/>}/>
+            <Route path='/admin/dashboard' element={<DashboardAdmin/>}/>
         </Routes>
     );
 };

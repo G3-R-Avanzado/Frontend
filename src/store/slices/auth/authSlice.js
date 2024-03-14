@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+/* const initialState = {
     user: {
         username: "Agustin",
         email: "asdasdasd@gmail.com",
@@ -12,9 +12,9 @@ const initialState = {
     isLogged: true,
     token: "sdfsdfsdf",
     message: null
-}  
+}   */
 
-/* const initialState = {
+const initialState = {
     user: {
         username: null,
         email: null,
@@ -26,14 +26,13 @@ const initialState = {
     isLogged: false,
     token: null,
     message: null
-}   */
+}  
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState: initialState,
     reducers: {
         login: (state, action) => {
-            console.log(action)
             state.user = action.payload.user,
             state.token = action.payload.token,
             state.isLogged = true,
@@ -61,8 +60,6 @@ export const authSlice = createSlice({
             } 
         },
         messageError: (state, action) => {
-            console.log(state)
-            console.log(action)
             state.message ={
                 type:"error",
                 text:action.payload.message

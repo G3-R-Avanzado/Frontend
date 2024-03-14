@@ -1,24 +1,27 @@
 import React, { useContext, useEffect } from 'react';
 import { Nav, Navbar, Container, Image, Form, NavDropdown, Button } from "react-bootstrap"
 import Logo from "../../assets/logo1.png"
+
 import { logout } from '../../store/slices/auth/authSlice';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Roles } from '../../type/Type';
 
 const Menu = (props) => {
-    const { isLogged, message,rol } = useSelector((store) => store.auth)
+    const { isLogged, message, user } = useSelector((store) => store.auth)
     const dispatch = useDispatch()
     const navegar = useNavigate();
 
     useEffect(() => {
-        if (message) {
+        if (message?.text != null) {
             Swal.fire(`${message.text}`, ``, `${message.type}`);
         }
     }, [message]);
     const cerrarSesion = () => {
         dispatch(logout());
-        navegar("/")
+        //navegar("/")
     };
     
     return (
@@ -37,16 +40,16 @@ const Menu = (props) => {
                         {isLogged ? (
                             <>
                                 <NavLink end className='mx-2 btn-navbar nav-item nav-link ' onClick={cerrarSesion} >Cerrar Sesión</NavLink>
-                                {rol == "admin" ? (
-                                    <NavLink end className='mx-2 btn-navbar nav-item nav-link ' to="/Admin/Dashboard" >Administrar</NavLink>
+                                {user.rol == Roles.Admin ? (
+                                    <NavLink end className='mx-2 btn-navbar nav-item nav-link ' to="/admin/dashboard">Administrar</NavLink>
                                 ) : (
-                                    <NavLink end className='mx-2 btn-navbar nav-item nav-link ' to="/User/Dashboard" >Mis publicaciones</NavLink>
+                                    <NavLink end className='mx-2 btn-navbar nav-item nav-link ' to="/user/dashboard" >Mis publicaciones</NavLink>
                                 )}
                             </>
                         ) : (
                             <>
-                            <NavLink end to="/login" className='mx-2 btn-navbar nav-item nav-link ' >Ingresar</NavLink>
-                            <NavLink end to="/register" className='mx-2 btn-navbar nav-item nav-link ' >Registrarme</NavLink>
+                            <NavLink end to="/auth/login" className='mx-2 btn-navbar nav-item nav-link ' >Ingresar</NavLink>
+                            <NavLink end to="/auth/register" className='mx-2 btn-navbar nav-item nav-link ' >Registrarme</NavLink>
                             </>
                         )}
                         <NavLink end to="" className='mx-2 btn-navbar nav-item nav-link ' >Contacto</NavLink>
