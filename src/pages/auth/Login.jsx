@@ -6,11 +6,14 @@ import { getLogin } from '../../store/slices/auth/authThunks';
 import LayoutAuth from './LayoutAuth.jsx'
 import { Formik } from 'formik';
 import { validationAuthUser } from '../../helpers/Helpers.jsx';
+import { useNavigate } from "react-router-dom";
+
 
 
 
 export const Login = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const initialValues = {
         email: 'g3admin@gmail.com',
@@ -21,6 +24,7 @@ export const Login = () => {
         dispatch(
             getLogin(event.email, event.password)
         ) 
+        navigate("/public")
     }
 
     return (
@@ -29,7 +33,7 @@ export const Login = () => {
             <Formik
                 validationSchema={validationAuthUser}
                 onSubmit={handleSubmitFormik}
-                initialValues={initialValues}
+                initialValues={initialValues} 
             >
                 {({ handleSubmit, handleChange, values, errors, touched }) => (
                     <Form onSubmit={handleSubmit}>

@@ -9,7 +9,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Roles } from '../../type/Type';
 
-const Menu = (props) => {
+const Menu = () => {
     const { isLogged, message, user } = useSelector((store) => store.auth)
     const dispatch = useDispatch()
     const navegar = useNavigate();
@@ -19,9 +19,10 @@ const Menu = (props) => {
             Swal.fire(`${message.text}`, ``, `${message.type}`);
         }
     }, [message]);
+    
     const cerrarSesion = () => {
         dispatch(logout());
-        //navegar("/")
+        navegar("/public")
     };
     
     return (
@@ -36,7 +37,7 @@ const Menu = (props) => {
                 <Navbar.Toggle className='text-white' aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse className='responsive-navbar-nav'>
                     <Nav className="ms-auto me-5" style={{ maxHeight: '100px' }} navbarScroll>
-                        <NavLink end to="/" className='mx-2 btn-navbar nav-item nav-link ' >Inicio</NavLink>
+                        <NavLink end to="/public" className='mx-2 btn-navbar nav-item nav-link ' >Inicio</NavLink>
                         {isLogged ? (
                             <>
                                 <NavLink end className='mx-2 btn-navbar nav-item nav-link ' onClick={cerrarSesion} >Cerrar Sesión</NavLink>
@@ -48,12 +49,12 @@ const Menu = (props) => {
                             </>
                         ) : (
                             <>
-                            <NavLink end to="/auth/login" className='mx-2 btn-navbar nav-item nav-link ' >Ingresar</NavLink>
-                            <NavLink end to="/auth/register" className='mx-2 btn-navbar nav-item nav-link ' >Registrarme</NavLink>
+                            <NavLink end to="/public/auth/login" className='mx-2 btn-navbar nav-item nav-link ' >Ingresar</NavLink>
+                            <NavLink end to="/public/auth/register" className='mx-2 btn-navbar nav-item nav-link ' >Registrarme</NavLink>
                             </>
                         )}
-                        <NavLink end to="" className='mx-2 btn-navbar nav-item nav-link ' >Contacto</NavLink>
-                        <NavLink end to="" className='mx-2 btn-navbar nav-item nav-link ' >Ayuda</NavLink>
+                        <NavLink end to="/public/contacto" className='mx-2 btn-navbar nav-item nav-link '>Contacto</NavLink>
+                        <NavLink end to="/public/ayuda" className='mx-2 btn-navbar nav-item nav-link '>Ayuda</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

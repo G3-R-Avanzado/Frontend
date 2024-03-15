@@ -28,7 +28,7 @@ const DetailProduct = ({ producto,descripcion,nombre ,orden,vendedor,precio}) =>
             </Card>
             :
             <></>
-        }
+        } 
         </>
     );
 };

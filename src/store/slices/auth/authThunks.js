@@ -1,25 +1,26 @@
 import { login, logout, messageError } from "./authSlice";
 import { axiosAuth } from "../../../config/axiosApi";
-import { Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
+
+
 
 export const getLogin = (email, password) => {
     return async (dispatch) => {
         try {
             
-            const { data } = await axiosAuth.post('/login', {
+            /* const { data } = await axiosAuth.post('/login', {
                 email: email,
                 password: password
-            })
+            }) */
 
-            /* const data = {
+            const data = {
                 username: "Agustin",
                 email: "asdasdasd@gmail.com",
-                rol: "Admin",
+                rol: "admin",
                 id: 51561651,
                 createdAt: "dasdasd",
                 updateAt: "sadadasd"
-            } */
+            }
 
 
             const token = 'sa23fgty54tgfewr43'
@@ -32,7 +33,7 @@ export const getLogin = (email, password) => {
                 user: data,
                 token: token
             }))
-
+            
         } catch (error) {
             dispatch(messageError({message: error.response.data[0]}))
         }
