@@ -7,44 +7,49 @@ import useCarousel from '../../Hooks/useCarousel';
 const DetailMostSeller = () => {
     const [carga, setcarga] = useState(false)
     const { currentIndex, goToIndex } = useCarousel(productos.aprobados.length);
+    const [paginas, setPaginas] = useState([]);
+
     /* Control de carga */
-    useEffect(() => {
-        if (productos) {
-            setcarga(true)
-
-            for (let i = 0; i < productos.aprobados.length; i++) {
-                
-                
-            }
+    const dividirProductos = (productos) => {
+        const paginasTemp = [];
+        for (let i = 0; i < (productos).length; i += 5) {
+            paginasTemp.push(productos.slice(i, i + 5));
         }
+        return paginasTemp;
+    };
+    useEffect(() => {
+        if (productos && productos.aprobados) {
+            const paginasDivididas = dividirProductos(productos.aprobados);
+            setPaginas(paginasDivididas);
+            setcarga(true);
+        }
+    }, []);
 
-    }, [])
     return (
         <Container className='m-5 bg-white border border-opacity-100 rounded'>
             <h2 className='fs-2 m-4'>Lo mas vendido!</h2>
             {
                 carga ?
                     (<Container>
-                        
                         <Carousel activeIndex={currentIndex} onSelect={goToIndex}>
-
-                            <Carousel.Item >
-                                <Container className='d-flex'>
-                                {(productos.aprobados).map((producto, index) => (
-                                    <DetailProduct
-                                        className="d-flex"
-                                        key={index}
-                                        orden={index}
-                                        nombre={producto.Nombre}
-                                        precio={producto.Precio}
-                                        descripcion={producto.Descripcion}
-                                        vendedor={producto.Vendedor}
-                                        imagen={producto.imageUrl} />
-                                        
-                                ))}
+                        {paginas.map((productosPagina, index) => (
+                            <Carousel.Item key={index}>
+                                <Container className='d-flex justify-content-center'>
+                                    {productosPagina.map((producto, innerIndex) => (
+                                        <DetailProduct
+                                            className="d-flex"
+                                            key={innerIndex}
+                                            orden={index * 5 + innerIndex}
+                                            nombre={producto.Nombre}
+                                            precio={producto.Precio}
+                                            descripcion={producto.Descripcion}
+                                            vendedor={producto.Vendedor}
+                                            imagen={producto.imageUrl}
+                                        />
+                                    ))}
                                 </Container>
                             </Carousel.Item>
-
+                        ))}
                         </Carousel>
                     </Container>)
                     :
