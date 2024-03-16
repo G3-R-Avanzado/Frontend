@@ -31,7 +31,7 @@ export const productos={
             Descripcion:"Especial para este verano que necesitas...",
             Vendedor:"MarMax"
             ,imageUrl:"https://http2.mlstatic.com/D_NQ_NP_768125-MLA71783090116_092023-O.webp"
-        },
+        }/* ,
         {
             Nombre:"Cinta Caminadora",
             Precio:"$",
@@ -89,7 +89,7 @@ export const productos={
             Descripcion:"",
             Vendedor:"IsaiaTuc"
             ,imageUrl:"https://http2.mlstatic.com/D_NQ_NP_768125-MLA71783090116_092023-O.webp"
-        },
+        }, */
     ],
     desaprobados:[
 
