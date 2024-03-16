@@ -26,11 +26,11 @@ const DetailMostSeller = () => {
     }, []);
 
     return (
-        <Container className='m-5 bg-white border border-opacity-100 rounded'>
+        <Container className=' m-auto mt-5 mb-5 bg-white border border-opacity-100 rounded'>
             <h2 className='fs-2 m-4'>Lo mas vendido!</h2>
             {
                 carga ?
-                    (<Container>
+                    (<Container className=''>
                         <Carousel activeIndex={currentIndex} onSelect={goToIndex}>
                         {paginas.map((productosPagina, index) => (
                             <Carousel.Item key={index}>
