@@ -11,7 +11,6 @@ const DetailProduct = ({ producto,descripcion,nombre ,orden,vendedor,precio}) =>
             console.log(descripcion);
             console.log(vendedor);
         }
-
     },[])    
     return (
         <>{

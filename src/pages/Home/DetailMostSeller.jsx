@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Carousel, Image, Container, Card } from 'react-bootstrap';
 import DetailProduct from './DetailProduct';
+import { productos } from '../../productos';
 
-const DetailMostSeller = ({ productos,orden }) => {
+const DetailMostSeller = () => {
     const [carga, setcarga] = useState(false)
+    
     useEffect(()=>{
-        if (productos !== null) {
+        if (productos) {
             setcarga(true)
             console.log(productos);
         }
@@ -13,17 +15,21 @@ const DetailMostSeller = ({ productos,orden }) => {
     },[])
     return (
         <>
+        <h2 className='fs-2 m-4'>Lo mas vendido!</h2>
         {
             carga ?
-                (<Carousel.Item key={orden}>
-                    {productos.map((producto, index) => (
+                (<Container>
+                <Carousel.Item >
+                    {(productos.aprobados).map((producto, index) => (
                         <DetailProduct key={index} orden={index} 
                         nombre={producto.Nombre}
                         precio={producto.Precio}
                         descripcion={producto.Descripcion}
                         vendedor={producto.Vendedor} />
                     ))}
-                </Carousel.Item>)
+                </Carousel.Item>
+                
+                </Container>)
                 :
                 <></>
             }

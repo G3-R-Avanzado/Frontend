@@ -1,7 +1,7 @@
-import banner1 from "./assets/image.png"
-import banner2 from "./assets/imageiphone.png"
-import banner3 from "./assets/images24.png"
-import banner4 from "./assets/imagechev.png"
+import banner1 from "./assets/banner1.png"
+import banner2 from "./assets/banner2.png"
+import banner3 from "./assets/banner3.png"
+import banner4 from "./assets/banner4.png"
 
 export const productos={
     portada: [
