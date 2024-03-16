@@ -6,7 +6,7 @@ import logo1 from "../../assets/logo1.png"
 import useCarousel from '../../Hooks/useCarousel';
 
 const MostSeller = () => {
-    const { currentIndex, goToNext, goToPrev, goToIndex } = useCarousel(productos.portada.length);
+    const { currentIndex, goToIndex } = useCarousel(productos.portada.length);
 
     return (
         <>
@@ -14,11 +14,6 @@ const MostSeller = () => {
             {productos.portada.map((item, index) => (
                 <Carousel.Item   key={index}>
                     <Image src={item.src} id='carousel' className=' align-self-center objet-fit-contain' />
-
-                   {/*  <Carousel.Caption>
-                        <h3>{item.Nombre}</h3>
-                        <p>{item.Descripcion}</p>
-                    </Carousel.Caption> */}
                 </Carousel.Item>
             ))}
         </Carousel>

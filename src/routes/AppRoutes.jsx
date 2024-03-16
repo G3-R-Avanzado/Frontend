@@ -1,41 +1,44 @@
 import React, { useContext, useEffect } from 'react';
-//import { AuthContext } from '../providers/AuthProvider';
 import { Routes, Route } from 'react-router-dom';
-import { PublicRoutes } from './PublicRoutes';
-import { PrivateRoutesAdmin } from './PrivateRoutesAdmin.jsx';
-import { AuthLayout } from '../layouts/AuthLayout';
-import { useSelector, useDispatch } from 'react-redux';
-import Menu from '../components/common/Menu';
-import { checkToken } from '../store/slices/auth/authThunks';
-import { Footer } from '../components/common/Footer.jsx'
-import PrivateRoutesUser from './PrivateRoutesUser.jsx';
-import PublicLayouts from '../layouts/PublicLayouts.jsx';
-import AdminLayouts from "../layouts/AdminLayout.jsx"
-import UserLayout from "../layouts/UserLayout.jsx"
-import Home from '../pages/Home/Home.jsx';
-export const AppRoutes = () => {
-    const {isLogged,rol} = useSelector((state)=>state.auth)
-    const dispatch = useDispatch()
 
+import PrivateRoutes  from './PrivateRoutes.jsx';
+
+import PublicLayouts from '../layouts/PublicLayouts.jsx';
+import UserLayout from "../layouts/UserLayout.jsx";
+import AdminLayouts from "../layouts/AdminLayout.jsx";
+
+import { useSelector, useDispatch } from 'react-redux';
+import { checkToken } from '../store/slices/auth/authThunks';
+
+import { Roles } from '../type/Type.js';
+
+import Menu from '../components/common/Menu';
+import { Footer } from '../components/common/Footer.jsx'
+
+export const AppRoutes = () => {
+    const {isLogged, user} = useSelector((state)=>state.auth)
+    const dispatch = useDispatch()
+    
     useEffect(()=>{
         dispatch(checkToken())
     },[])
     
     return (
         <>
-            <Menu isLogged={isLogged} rol={rol}/>
+            <Menu />
             <Routes>
-                <Route exact path='/*' element={<Home/>}/>
-                <Route exact path='/Admin/*' element={
-                    <PrivateRoutesAdmin isLogged={isLogged} rol={rol}>
-                        <AdminLayouts />
-                    </PrivateRoutesAdmin>
-                } />
-                <Route path='/Usuario/*' element={
-                    <PrivateRoutesUser isLogged={isLogged} rol={rol}>
-                    <UserLayout/>
-                    </PrivateRoutesUser>
+
+                <Route exact path='/public/*' element={
+                    <PublicLayouts />
                 }/>
+                
+                <Route path='/*' element={
+                    <PrivateRoutes isLogged={isLogged}>
+                        {user.rol == Roles.Admin && <AdminLayouts/>}
+                        {user.rol == Roles.User && <UserLayout/>}
+                    </PrivateRoutes>
+                }/>
+
             </Routes>
             <Footer/>
         </>

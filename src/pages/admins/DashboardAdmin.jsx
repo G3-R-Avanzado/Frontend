@@ -6,7 +6,7 @@ const DashboardAdmin = () => {
     const { user } = useSelector((store) => store.auth);
     return (
         <div>
-        <h1>Dashboard de {user.username}</h1>
+            <h1>Dashboard de {user.username} - {user.rol}</h1>
         </div>
     );
 };

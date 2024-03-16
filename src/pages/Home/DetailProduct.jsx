@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 
-const DetailProduct = ({ producto,descripcion,nombre ,orden,vendedor,precio}) => {
+const DetailProduct = ({imagen,descripcion,nombre ,orden,vendedor,precio}) => {
     const [carga, setcarga] = useState(false)
+    /* Control de carga  */
     useEffect(()=>{
-        if (producto !== null) {
+        if (imagen) {
             setcarga(true)
-            console.log(nombre);
-            console.log(precio);
-            console.log(descripcion);
-            console.log(vendedor);
         }
-
     },[])    
     return (
         <>{
             carga?
             <Card key={orden} style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="" />
+                <Card.Img variant="top" src={imagen} />
                 <Card.Body>
                     <Card.Title>{nombre}</Card.Title>
                     <Card.Text>
@@ -28,7 +24,7 @@ const DetailProduct = ({ producto,descripcion,nombre ,orden,vendedor,precio}) =>
             </Card>
             :
             <></>
-        }
+        } 
         </>
     );
 };
