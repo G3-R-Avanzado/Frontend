@@ -8,6 +8,7 @@ const DetailMostSeller = () => {
     const [carga, setcarga] = useState(false)
     const { currentIndex, goToIndex } = useCarousel(productos.aprobados.length);
     const [paginas, setPaginas] = useState([]);
+    const [paginasMobile, setPaginasMobile] = useState([]);
 
     /* Control de carga */
     const dividirProductos = (productos) => {
@@ -17,10 +18,19 @@ const DetailMostSeller = () => {
         }
         return paginasTemp;
     };
+    const dividirProductosMobile = (productos) => {
+        const paginasTemp = [];
+        for (let i = 0; i < (productos).length; i += 1) {
+            paginasTemp.push(productos.slice(i, i + 1));
+        }
+        return paginasTemp;
+    };
     useEffect(() => {
-        if (productos && productos.aprobados) {
+        if (productos) {
             const paginasDivididas = dividirProductos(productos.aprobados);
             setPaginas(paginasDivididas);
+            const paginasDivididasMobile = dividirProductosMobile(productos.aprobados);
+            setPaginasMobile(paginasDivididasMobile);
             setcarga(true);
         }
     }, []);
@@ -31,7 +41,7 @@ const DetailMostSeller = () => {
             {
                 carga ?
                     (<Container className=''>
-                        <Carousel activeIndex={currentIndex} onSelect={goToIndex}>
+                        <Carousel className='carouselEscritorio' activeIndex={currentIndex} onSelect={goToIndex}>
                         {paginas.map((productosPagina, index) => (
                             <Carousel.Item key={index}>
                                 <Container className='d-flex justify-content-center'>
@@ -51,6 +61,26 @@ const DetailMostSeller = () => {
                             </Carousel.Item>
                         ))}
                         </Carousel>
+                        <Carousel className="carousel-mobile" activeIndex={currentIndex} onSelect={goToIndex}>
+                        {paginasMobile.map((productosPagina, index) => (
+                            <Carousel.Item key={index}>
+                                <Container className='d-flex justify-content-center'>
+                                    {productosPagina.map((producto, innerIndex) => (
+                                        <DetailProduct
+                                            className="d-flex"
+                                            key={innerIndex}
+                                            orden={index * 1 + innerIndex}
+                                            nombre={producto.Nombre}
+                                            precio={producto.Precio}
+                                            descripcion={producto.Descripcion}
+                                            vendedor={producto.Vendedor}
+                                            imagen={producto.imageUrl}
+                                        />
+                                    ))}
+                                </Container>
+                            </Carousel.Item>
+                        ))}
+                    </Carousel>
                     </Container>)
                     :
                     <></>

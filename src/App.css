@@ -43,3 +43,17 @@ Button :hover{
     left: 0;
     margin: 0!important;
 }
+
+@media (max-width: 1000px) {
+    .carouselEscritorio {
+        display: none;
+    }
+    div.carousel-indicators,a.carousel-control-next, a.carousel-control-prev{
+        display: none;
+    }
+}
+@media (min-width: 1000px) {
+    .carousel-mobile {
+        display: none;
+    }
+}

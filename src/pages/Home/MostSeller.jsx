@@ -13,7 +13,7 @@ const MostSeller = () => {
         <Carousel    activeIndex={currentIndex} onSelect={goToIndex}>
             {productos.portada.map((item, index) => (
                 <Carousel.Item   key={index}>
-                    <Image src={item.src} id='carousel' className=' align-self-center objet-fit-contain' />
+                    <Image src={item.src} id='carousel' className='banners align-self-center objet-fit-contain' />
                 </Carousel.Item>
             ))}
         </Carousel>
